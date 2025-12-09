@@ -28,39 +28,39 @@ export function Hero() {
   }, [charIndex, strengthIndex]);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 pb-12">
       <HeroBackground />
 
-      <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
-        <p className="text-indigo-600 dark:text-indigo-400 text-lg font-semibold mb-4 animate-fade-in">
+      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <p className="text-indigo-600 dark:text-indigo-400 text-base sm:text-lg font-medium mb-6 animate-fade-in opacity-0">
           {heroContent.intro}
         </p>
 
-        <h1 className="text-5xl md:text-7xl font-bold text-gray-900 dark:text-white mb-6 leading-tight animate-fade-in-delay-1">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 dark:text-white mb-8 leading-tight animate-fade-in opacity-0" style={{ animationDelay: "0.2s" }}>
           {heroContent.title}
         </h1>
 
-        <div className="h-16 mb-8 flex items-center justify-center">
-          <p className="text-2xl md:text-3xl font-semibold text-indigo-600 dark:text-indigo-400 min-h-16">
+        <div className="h-20 sm:h-24 mb-10 flex items-center justify-center">
+          <p className="text-xl sm:text-2xl md:text-3xl font-semibold text-indigo-600 dark:text-indigo-400 min-h-[3rem]">
             {displayedStrength}
-            <span className="animate-pulse">|</span>
+            <span className="animate-pulse ml-1">|</span>
           </p>
         </div>
 
-        <p className="text-lg text-gray-600 dark:text-gray-300 mb-12 max-w-2xl mx-auto animate-fade-in-delay-2">
+        <p className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed animate-fade-in opacity-0" style={{ animationDelay: "0.4s" }}>
           {heroContent.subtitle}
         </p>
 
-        <div className="flex gap-4 justify-center flex-wrap animate-fade-in-delay-3">
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in opacity-0" style={{ animationDelay: "0.6s" }}>
           <a
             href="#experience"
-            className="px-8 py-3 bg-indigo-600 text-white rounded-lg font-semibold hover:bg-indigo-700 transition-all duration-300 transform hover:scale-105"
+            className="w-full sm:w-auto px-8 py-3.5 bg-indigo-600 dark:bg-indigo-500 text-white rounded-lg font-semibold hover:bg-indigo-700 dark:hover:bg-indigo-600 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
           >
             View Resume
           </a>
           <a
             href="#contact"
-            className="px-8 py-3 border-2 border-indigo-600 text-indigo-600 dark:text-indigo-400 dark:border-indigo-400 rounded-lg font-semibold hover:bg-indigo-50 dark:hover:bg-indigo-950 transition-all duration-300"
+            className="w-full sm:w-auto px-8 py-3.5 border-2 border-indigo-600 dark:border-indigo-400 text-indigo-600 dark:text-indigo-400 rounded-lg font-semibold hover:bg-indigo-50 dark:hover:bg-indigo-950/50 transition-all duration-300"
           >
             Contact Me
           </a>
@@ -68,44 +68,12 @@ export function Hero() {
             href="https://www.linkedin.com/in/meetmdsagorkhan/"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-8 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-all duration-300 transform hover:scale-105"
+            className="w-full sm:w-auto px-8 py-3.5 bg-blue-600 dark:bg-blue-500 text-white rounded-lg font-semibold hover:bg-blue-700 dark:hover:bg-blue-600 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
           >
             LinkedIn
           </a>
         </div>
       </div>
-
-      <style jsx>{`
-        @keyframes fadeIn {
-          from {
-            opacity: 0;
-            transform: translateY(20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        .animate-fade-in {
-          animation: fadeIn 0.8s ease-out forwards;
-        }
-
-        .animate-fade-in-delay-1 {
-          animation: fadeIn 0.8s ease-out 0.2s forwards;
-          opacity: 0;
-        }
-
-        .animate-fade-in-delay-2 {
-          animation: fadeIn 0.8s ease-out 0.4s forwards;
-          opacity: 0;
-        }
-
-        .animate-fade-in-delay-3 {
-          animation: fadeIn 0.8s ease-out 0.6s forwards;
-          opacity: 0;
-        }
-      `}</style>
     </section>
   );
 }

@@ -6,25 +6,25 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-gray-900 dark:bg-black text-gray-300 py-16 transition-colors duration-300">
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="grid md:grid-cols-4 gap-12 mb-12">
+    <footer className="bg-slate-900 dark:bg-black text-gray-300 py-12 sm:py-16 transition-colors duration-300">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12 mb-12">
           {/* Brand */}
-          <div>
-            <h3 className="text-2xl font-bold text-white mb-4">SK</h3>
-            <p className="text-sm text-gray-400">
+          <div className="sm:col-span-2 lg:col-span-1">
+            <h3 className="text-2xl sm:text-3xl font-bold text-white mb-3">SK</h3>
+            <p className="text-sm text-gray-400 leading-relaxed">
               CX Team Lead & Automation Specialist
             </p>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-bold text-white mb-4">Navigation</h4>
-            <ul className="space-y-2 text-sm">
+            <h4 className="font-bold text-white mb-4 text-base sm:text-lg">Navigation</h4>
+            <ul className="space-y-2.5 text-sm">
               <li>
                 <a
                   href="#about"
-                  className="hover:text-indigo-400 transition-colors"
+                  className="text-gray-400 hover:text-indigo-400 transition-colors"
                 >
                   About
                 </a>
@@ -32,7 +32,7 @@ export function Footer() {
               <li>
                 <a
                   href="#skills"
-                  className="hover:text-indigo-400 transition-colors"
+                  className="text-gray-400 hover:text-indigo-400 transition-colors"
                 >
                   Skills
                 </a>
@@ -40,15 +40,23 @@ export function Footer() {
               <li>
                 <a
                   href="#experience"
-                  className="hover:text-indigo-400 transition-colors"
+                  className="text-gray-400 hover:text-indigo-400 transition-colors"
                 >
                   Experience
                 </a>
               </li>
               <li>
                 <a
+                  href="#projects"
+                  className="text-gray-400 hover:text-indigo-400 transition-colors"
+                >
+                  Projects
+                </a>
+              </li>
+              <li>
+                <a
                   href="#contact"
-                  className="hover:text-indigo-400 transition-colors"
+                  className="text-gray-400 hover:text-indigo-400 transition-colors"
                 >
                   Contact
                 </a>
@@ -58,12 +66,12 @@ export function Footer() {
 
           {/* Education */}
           <div>
-            <h4 className="font-bold text-white mb-4">Education</h4>
-            <ul className="space-y-2 text-sm">
+            <h4 className="font-bold text-white mb-4 text-base sm:text-lg">Education</h4>
+            <ul className="space-y-3 text-sm">
               {educationContent.map((edu, idx) => (
                 <li key={idx}>
                   <p className="font-semibold text-gray-300">{edu.degree}</p>
-                  <p className="text-gray-500 text-xs">{edu.institution}</p>
+                  <p className="text-gray-500 text-xs mt-1">{edu.institution}</p>
                 </li>
               ))}
             </ul>
@@ -71,8 +79,8 @@ export function Footer() {
 
           {/* Languages */}
           <div>
-            <h4 className="font-bold text-white mb-4">Languages</h4>
-            <ul className="space-y-2 text-sm">
+            <h4 className="font-bold text-white mb-4 text-base sm:text-lg">Languages</h4>
+            <ul className="space-y-2.5 text-sm">
               {languagesContent.map((lang, idx) => (
                 <li key={idx}>
                   <p className="text-gray-300">
@@ -86,41 +94,43 @@ export function Footer() {
         </div>
 
         {/* Social Links */}
-        <div className="border-t border-gray-800 pt-8 mb-8">
-          <div className="flex gap-6 justify-center mb-8">
+        <div className="border-t border-slate-800 pt-8 mb-8">
+          <div className="flex gap-6 justify-center">
             <a
               href={`mailto:${siteConfig.email}`}
-              className="text-gray-400 hover:text-indigo-400 transition-colors"
+              className="text-gray-400 hover:text-indigo-400 transition-colors text-2xl"
               title="Email"
+              aria-label="Email"
             >
-              <span className="text-2xl">✉️</span>
+              ✉️
             </a>
             <a
               href={siteConfig.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-400 hover:text-indigo-400 transition-colors"
+              className="text-gray-400 hover:text-indigo-400 transition-colors text-2xl"
               title="LinkedIn"
+              aria-label="LinkedIn"
             >
-              <span className="text-2xl">🔗</span>
+              🔗
             </a>
             <a
               href={siteConfig.whatsapp}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-400 hover:text-indigo-400 transition-colors"
+              className="text-gray-400 hover:text-indigo-400 transition-colors text-2xl"
               title="WhatsApp"
+              aria-label="WhatsApp"
             >
-              <span className="text-2xl">💬</span>
+              💬
             </a>
           </div>
         </div>
 
         {/* Copyright */}
-        <div className="text-center text-sm text-gray-500 border-t border-gray-800 pt-8">
+        <div className="text-center text-sm text-gray-500 border-t border-slate-800 pt-8">
           <p>
-            &copy; {currentYear} MD Sagor Khan. All rights reserved. | Designed
-            with care.
+            &copy; {currentYear} MD Sagor Khan. All rights reserved. | Designed with care.
           </p>
         </div>
       </div>

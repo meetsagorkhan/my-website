@@ -28,6 +28,7 @@ export function Contact() {
         opacity: 1,
         y: 0,
         duration: 0.8,
+        ease: "power2.out",
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top 80%",
@@ -77,48 +78,48 @@ export function Contact() {
     <section
       id="contact"
       ref={sectionRef}
-      className="py-20 px-6 bg-gray-50 dark:bg-gray-900 transition-colors duration-300"
+      className="py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-slate-900 transition-colors duration-300"
     >
-      <div className="max-w-4xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4 text-center">
+      <div className="max-w-5xl mx-auto">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4 text-center">
           Get In Touch
         </h2>
-        <p className="text-center text-gray-600 dark:text-gray-400 mb-12">
+        <p className="text-center text-gray-600 dark:text-gray-400 mb-12 md:mb-16 text-base sm:text-lg">
           Have a question or opportunity? I&apos;d love to hear from you.
         </p>
 
-        <div className="grid md:grid-cols-2 gap-12">
+        <div className="grid md:grid-cols-2 gap-8 md:gap-12">
           {/* Contact Info */}
-          <div className="space-y-8">
+          <div className="space-y-8 order-2 md:order-1">
             <div>
-              <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4">
+              <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-6">
                 Contact Information
               </h3>
-              <div className="space-y-4">
+              <div className="space-y-5">
                 <a
                   href={`mailto:${siteConfig.email}`}
-                  className="flex items-center gap-3 text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+                  className="flex items-center gap-4 text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors group"
                 >
-                  <span className="text-2xl">✉️</span>
-                  <span>{siteConfig.email}</span>
+                  <span className="text-2xl sm:text-3xl">✉️</span>
+                  <span className="text-sm sm:text-base break-all">{siteConfig.email}</span>
                 </a>
                 <a
                   href={siteConfig.whatsapp}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-3 text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+                  className="flex items-center gap-4 text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors group"
                 >
-                  <span className="text-2xl">💬</span>
-                  <span>{siteConfig.phone}</span>
+                  <span className="text-2xl sm:text-3xl">💬</span>
+                  <span className="text-sm sm:text-base">{siteConfig.phone}</span>
                 </a>
                 <a
                   href={siteConfig.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-3 text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+                  className="flex items-center gap-4 text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors group"
                 >
-                  <span className="text-2xl">🔗</span>
-                  <span>LinkedIn Profile</span>
+                  <span className="text-2xl sm:text-3xl">🔗</span>
+                  <span className="text-sm sm:text-base">LinkedIn Profile</span>
                 </a>
               </div>
             </div>
@@ -126,7 +127,7 @@ export function Contact() {
             <div>
               <a
                 href="/cv.pdf"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-indigo-600 text-white rounded-lg font-semibold hover:bg-indigo-700 transition-all duration-300 transform hover:scale-105"
+                className="inline-flex items-center gap-2 px-6 py-3.5 bg-indigo-600 dark:bg-indigo-500 text-white rounded-lg font-semibold hover:bg-indigo-700 dark:hover:bg-indigo-600 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
               >
                 <span>📄</span>
                 Download CV
@@ -135,7 +136,7 @@ export function Contact() {
           </div>
 
           {/* Contact Form */}
-          <form onSubmit={handleSubmit} className="contact-form space-y-6">
+          <form onSubmit={handleSubmit} className="contact-form space-y-5 order-1 md:order-2">
             <div>
               <label
                 htmlFor="name"
@@ -150,7 +151,7 @@ export function Contact() {
                 value={formData.name}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-600 dark:focus:ring-indigo-400 transition-colors"
+                className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-slate-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-600 dark:focus:ring-indigo-400 transition-colors"
                 placeholder="Your name"
               />
             </div>
@@ -169,7 +170,7 @@ export function Contact() {
                 value={formData.email}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-600 dark:focus:ring-indigo-400 transition-colors"
+                className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-slate-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-600 dark:focus:ring-indigo-400 transition-colors"
                 placeholder="your.email@example.com"
               />
             </div>
@@ -187,8 +188,8 @@ export function Contact() {
                 value={formData.message}
                 onChange={handleChange}
                 required
-                rows={5}
-                className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-600 dark:focus:ring-indigo-400 transition-colors resize-none"
+                rows={6}
+                className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-slate-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-600 dark:focus:ring-indigo-400 transition-colors resize-none"
                 placeholder="Your message..."
               />
             </div>
@@ -196,7 +197,7 @@ export function Contact() {
             <button
               type="submit"
               disabled={status === "loading"}
-              className="w-full px-6 py-3 bg-indigo-600 text-white rounded-lg font-semibold hover:bg-indigo-700 disabled:bg-gray-400 transition-all duration-300 transform hover:scale-105"
+              className="w-full px-6 py-3.5 bg-indigo-600 dark:bg-indigo-500 text-white rounded-lg font-semibold hover:bg-indigo-700 dark:hover:bg-indigo-600 disabled:bg-gray-400 disabled:cursor-not-allowed transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
             >
               {status === "loading"
                 ? "Sending..."
