@@ -13,9 +13,8 @@ export function Contact() {
     email: "",
     message: "",
   });
-  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">(
-    "idle"
-  );
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [errorMsg, setErrorMsg] = useState<string>("");
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -49,30 +48,48 @@ export function Contact() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+  const validateEmail = (email: string) => {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setStatus("loading");
+    setErrorMsg("");
 
+    // Inline validation
+    if (!formData.name || !formData.email || !formData.message) {
+      setErrorMsg("All fields are required.");
+      setStatus("error");
+      return;
+    }
+    if (!validateEmail(formData.email)) {
+      setErrorMsg("Please enter a valid email address.");
+      setStatus("error");
+      return;
+    }
+
+    setStatus("loading");
     try {
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
-
+      const data = await response.json();
       if (response.ok) {
         setStatus("success");
         setFormData({ name: "", email: "", message: "" });
         setTimeout(() => setStatus("idle"), 3000);
       } else {
+        setErrorMsg(data.error || "Failed to send message. Try again.");
         setStatus("error");
-        setTimeout(() => setStatus("idle"), 3000);
       }
-    } catch {
+    } catch (err: any) {
+      setErrorMsg("Network error. Please try again later.");
       setStatus("error");
-      setTimeout(() => setStatus("idle"), 3000);
     }
   };
+
 
   return (
     <section
@@ -137,6 +154,11 @@ export function Contact() {
 
           {/* Contact Form */}
           <form onSubmit={handleSubmit} className="contact-form space-y-5 order-1 md:order-2">
+            {errorMsg && (
+              <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-2 rounded mb-2 text-sm">
+                {errorMsg}
+              </div>
+            )}
             <div>
               <label
                 htmlFor="name"

@@ -12,22 +12,35 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // TODO: Integrate with email service (Nodemailer, SendGrid, etc.)
-    // For now, log to console
-    console.log("Contact form submission:", { name, email, message });
+    import nodemailer from "nodemailer";
 
-    // Placeholder: In production, send email here
-    // await sendEmail({
-    //   to: process.env.CONTACT_EMAIL,
-    //   subject: `New message from ${name}`,
-    //   text: message,
-    //   replyTo: email,
-    // });
+const transporter = nodemailer.createTransport({
+  host: process.env.SMTP_HOST,
+  port: Number(process.env.SMTP_PORT) || 587,
+  auth: {
+    user: process.env.SMTP_USER,
+    pass: process.env.SMTP_PASS,
+  },
+});
 
-    return NextResponse.json(
-      { success: true, message: "Message received" },
-      { status: 200 }
-    );
+try {
+  await transporter.sendMail({
+    from: process.env.SMTP_USER,
+    to: process.env.CONTACT_EMAIL,
+    subject: `New message from ${name}`,
+    text: `From: ${name} <${email}>\n\n${message}`,
+    replyTo: email,
+  });
+  return NextResponse.json(
+    { success: true, message: "Message sent successfully." },
+    { status: 200 }
+  );
+} catch (emailError) {
+  return NextResponse.json(
+    { error: "Failed to send email", detail: String(emailError) },
+    { status: 500 }
+  );
+}
   } catch (error) {
     console.error("Contact form error:", error);
     return NextResponse.json(

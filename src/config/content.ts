@@ -5,7 +5,7 @@ export const siteConfig = {
   email: "meetmdsagorkhan@gmail.com",
   phone: "+880 1309331446",
   linkedin: "https://www.linkedin.com/in/meetmdsagorkhan/",
-  github: "https://github.com",
+  github: "https://github.com/md-sagor-khan",
   whatsapp: "https://wa.me/8801309331446",
 };
 
